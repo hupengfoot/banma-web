@@ -58,19 +58,7 @@
 			    <%- include('./aList', {aRow: aRow}) %>
 			<% }); %>
 		    </div>
-		    <div class="container my-center">
-		        <nav>
-		            <ul class="pagination">
-		        	<li><a href="#">&laquo;</a></li>
-		        	<li><a href="#">1</a></li>
-		        	<li><a href="#">2</a></li>
-		        	<li><a href="#">3</a></li>
-		        	<li><a href="#">4</a></li>
-		        	<li><a href="#">5</a></li>
-		        	<li><a href="#">&raquo;</a></li>
-		            </ul>
-		        </nav>
-		    </div>
+		    <%- include('../pagination', {totalCount : totalCount, pageSize : pageSize, pageNum : pageNum, category : category}) -%>
 		</div>
 		<%- include('../recomFram') -%>
 	    </div>

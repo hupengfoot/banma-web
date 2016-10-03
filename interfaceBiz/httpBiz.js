@@ -26,11 +26,7 @@ httpBiz.getForumRecommendList = function(needAd, category, deviceType, pageSize,
 		cb(err);
 	    }else{
 		var tmp = JSON.parse(body);
-		if(tmp.code === 200){
-		    cb(null, tmp.messages.data.list);
-		}else{
-		    cb(null, []);
-		}
+		cb(null, tmp);
 	    }
     });
 };

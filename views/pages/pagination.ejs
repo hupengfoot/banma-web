@@ -1,0 +1,28 @@
+<div class="container my-center">
+    <nav>
+        <ul class="pagination">
+	<% var realHref %>
+	<% if(+ pageNum <= 1) {%>
+	<% realHref = "#" %>
+	<% }else { %>
+	<% realHref = "/vedio/list?needAd=true&category=" + category + "&deviceType=&pageSize=10&pageNum=" + (pageNum - 1) %>
+	<% } %>
+    	<li><a href="<%= realHref %>">&laquo;</a></li>
+	<% var size = Math.ceil((totalCount - pageSize * (pageNum - 1)) / pageSize) %>
+	<% var realSize = size > 5 ? 5 : size %>
+	<% realHref = "/vedio/list?needAd=true&category=" + category + "&deviceType=&pageSize=10&pageNum=" + ( + pageNum ) %>
+	<li class="active" ><a href="<%= realHref %>"><%= + pageNum %></a></li>
+	<% for (var i = 1; i < realSize; i++){ %>
+	<% realHref = "/vedio/list?needAd=true&category=" + category + "&deviceType=&pageSize=10&pageNum=" + ( + pageNum + i) %>
+	   <li><a href="<%= realHref %>"><%= + pageNum + i %></a></li>
+	<% } %>
+	<% if(pageSize * pageNum >= totalCount){ %>
+	<% realHref= "#" %>
+	<% } else { %>
+	<% realHref = "/vedio/list?needAd=true&category=" + category + "&deviceType=&pageSize=10&pageNum=" + ( + pageNum + 1) %>
+	<% } %>
+    	<li><a href="<%= realHref %>">&raquo;</a></li>
+        </ul>
+    </nav>
+</div>
+

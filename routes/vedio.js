@@ -14,7 +14,11 @@ router.get("/list", function(req, res){
 	if(err){
 	    res.jsonp("404 NOT FOUND");
 	}else{
-	    res.render('pages/vedio/list', {vedioList : infos});
+	    if(infos.code === 200){
+		res.render('pages/vedio/list', {vedioList : infos.messages.data.list, totalCount : infos.messages.data.count, pageSize : param.pageSize, pageNum : param.pageNum, category : param.category});
+	    }else{
+		res.jsonp("PARAM ERROR");
+	    }
 	}
     });
 });
