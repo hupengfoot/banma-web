@@ -1,0 +1,17 @@
+var assert = require('assert');
+
+global.port    = process.argv[2];
+var app = require('../app');
+
+//如果没有传入port参数则assert退出
+assert(global.port);
+
+app.set('port', global.port);
+var server = app.listen(app.get('port'), '', 4096, function() {
+    console.log('Express server listening on port ' + server.address().port);
+});
+
+server.on('clientError', function(exp, socket){
+    console.error('HTTP ERROR %s', JSON.stringify(exp));
+});
+

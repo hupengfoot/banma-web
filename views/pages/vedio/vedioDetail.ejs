@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-8">
+        <div>
+    	<video width="600" height="400" controls autoplay>
+    	    <source src="<%= vedioDetail.data.video.url %>" type="video/mp4">
+    	</video>
+        </div>
+        <div class="aDesc">
+            <p><%= vedioDetail.data.video.summary %></p>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <img src="../img/qiutan-watch.png"></img>
+                <span><%= vedioDetail.data.video.likeCount %></span>
+            </div>
+            <div class="col-lg-2">
+                <img src="../img/qiutan-time.png"></img>
+                <span><%= vedioDetail.data.video.createDate.split('T')[0] %></span>
+            </div>
+        </div>
+        <div>
+    	<p>相关评论</p>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div>
+	    <p>相关推荐:</p>
+	    <% vedioDetail.data.relativeVideos.forEach(function(aRelateRow){ %>
+		<%- include('./relativeVedio', {aRelateRow: aRelateRow}) %>
+	    <% }); %>
+        </div>
+    </div>
+</div>
+

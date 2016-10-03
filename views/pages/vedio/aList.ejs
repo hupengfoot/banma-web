@@ -1,0 +1,26 @@
+<div class="row aList">
+    <div class="col-lg-2">
+        <span> 
+            <a target="_blank" href="<%= "/vedio/detail?passport=&videoId=" + aRow.subject.videoId + "&objType=" + aRow.subject.objType + "&objId=" + aRow.subject.objId %>"><img  class="imgBox img-rounded" src="<%= "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.videoPoster %>"></a>
+        </span>
+    </div>
+    <div class="col-lg-6">
+        <div class="aTitle">
+            <p><%= aRow.title %></p>
+        </div>
+        <div class="aDesc">
+            <p><%= aRow.subject.summary %></p>
+        </div>
+        <div class="row">
+	   <div class="col-lg-2">
+		<img src="../img/qiutan-watch.png"></img>
+		<span><%= aRow.subject.likeCount %></span>
+	   </div>
+	   <div class="col-lg-4">
+		<img src="../img/qiutan-time.png"></img>
+		<span><%= aRow.subject.createDate.split('T')[0] %></span>
+	   </div>
+        </div>
+    </div>
+</div>
+
