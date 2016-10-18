@@ -50,9 +50,8 @@
 			    <%- include('./aList', {aRow: aRow}) %>
 			<% }); %>
 		    </div>
-		    <%- include('../pagination', {totalCount : totalCount, pageSize : pageSize, pageNum : pageNum, category : category}) -%>
+		    <%- include('../pagination', {totalCount : totalCount, pageSize : pageSize, pageNum : pageNum, category : category, myType : myType}) -%>
 		</div>
-		<%- include('../recomFram') -%>
 	    </div>
 	</div>
 	<%- include('../foot') -%>

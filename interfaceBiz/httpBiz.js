@@ -3,13 +3,16 @@ var request = require('request');
 
 var httpBiz = {};
 
-httpBiz.getForumRecommendList = function(needAd, category, deviceType, pageSize, pageNum, cb){
+httpBiz.getForumRecommendList = function(needAd, category, type, deviceType, pageSize, pageNum, cb){
     var formData = {};
     if(needAd !== undefined){
 	formData.needAd = needAd;
     }
     if(category !== undefined){
 	formData.category = category;
+    }
+    if(type !== undefined){
+	formData.type = type;
     }
     if(deviceType !== undefined){
 	formData.deviceType = deviceType;

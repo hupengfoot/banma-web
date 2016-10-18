@@ -10,12 +10,12 @@ var msg = require(path.join(global.rootPath, "define/msg")).global_msg_define;
 
 router.get("/list", function(req, res){
     var param = url.parse(req.url, true).query;
-    httpBiz.getForumRecommendList(param.needAd, param.category, param.deviceType, param.pageSize, param.pageNum, function(err, infos){
+    httpBiz.getForumRecommendList(param.needAd, param.category, param.type, param.deviceType, param.pageSize, param.pageNum, function(err, infos){
 	if(err){
 	    res.jsonp("404 NOT FOUND");
 	}else{
 	    if(infos.code === 200){
-		res.render('pages/vedio/list', {vedioList : infos.messages.data.list, totalCount : infos.messages.data.count, pageSize : param.pageSize, pageNum : param.pageNum, category : param.category});
+		res.render('pages/vedio/list', {vedioList : infos.messages.data.list, totalCount : infos.messages.data.count, pageSize : param.pageSize, pageNum : param.pageNum, category : param.category, myType : param.type});
 	    }else{
 		res.jsonp("PARAM ERROR");
 	    }
