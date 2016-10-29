@@ -55,4 +55,23 @@ httpBiz.getBMVideoDetail = function(passport, videoId, objType, objId, cb){
     });
 };
 
+httpBiz.getBMMarketSubjectDetail = function(passport, subjectId, cb){
+    var formData = {
+	subjectId : subjectId
+    };
+    if(passport !== undefined){
+	formData.passport = passport;
+    }
+
+    request.post({url: 'http://test.api.snsports.cn/api/content/pc/GetBMMarketSubjectDetail.json', form:formData}, function(err, response, body){
+	    if(err){
+		console.error(err);
+		cb(err);
+	    }else{
+		var tmp = JSON.parse(body);
+		cb(null, tmp.messages);
+	    }
+    });
+};
+
 module.exports = httpBiz;

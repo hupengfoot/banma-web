@@ -21,36 +21,52 @@
     </head>
     <body>
 	<%- include('../header') -%>
-
-	<div class="container">
-	    <ul class="nav nav-pills" role="tablist">
-		<li role="presentation" class="active col-sm-2"><a href="#">斑马帮</a></li>
-		<li role="presentation" class="col-sm-1"><a href="#">球谈</a></li>
-		<li role="presentation" class="col-sm-1"><a href="#">赛事</a></li>
-		<li role="presentation" class="col-sm-1"><a href="#">场地</a></li>
-		<li role="presentation" class="col-sm-1"><a href="#">青训</a></li>
+	
+	<div class="container" style="width:100%;margin-left:0px;margin-right:0px;margin-top:0px;margin:0px;background-color:#2c2c2c;">
+	    <ul class="nav nav-pills" role="tablist" >
+		<li role="presentation" class="col-sm-1" style="width:110px;margin-left:20%"><a href="#" style="color:#ffffff;">斑马帮</a></li>
+		<li role="presentation" class="active col-sm-1" style="width:110px;"><a href="#" style="color:#ffffff">球谈</a></li>
+		<li role="presentation" class="col-sm-1" style="width:110px;"><a href="#" style="color:#ffffff">赛事</a></li>
+		<li role="presentation" class="col-sm-1" style="width:110px;"><a href="#" style="color:#ffffff">场地</a></li>
+		<li role="presentation" class="col-sm-1" style="width:110px;"><a href="#" style="color:#ffffff">青训</a></li>
 	    </ul>
 	</div>
 	
 	<div class="container">
+	    <% var list1Active = 'active' %>
+	    <% var list2Active = '' %>
+	    <% if(myType == 'video_obj'){ %>
+	    <% list1Active = '' %>
+	    <% list2Active = 'active' %>
+	    <% } %>
 	    <div class="row">
 		<div class="col-lg-8">
-		    <div class="container"> 
-		        <ul id="myTab" class="nav nav-tabs">
-		    	<li class="active">
-		    	    <a href="#home" data-toggle="tab">
-		    		精选
-		    	    </a>
-		    	</li>
-		    	<li><a href="#ios" data-toggle="tab">TV</a></li>
-		        </ul>
-		    </div>
 		    <div class="container">
-			<% vedioList.forEach(function(aRow){ %>
-			    <%- include('./aList', {aRow: aRow}) %>
-			<% }); %>
+			<div class="tabbable">
+			    <ul id="myTab" class="nav nav-tabs">
+				<li class="<%= list1Active %>">
+				    <a href="#list-1" data-toggle="tab">
+		    		精选
+				    </a>
+				</li>
+				<li class="<%= list2Active %>"><a href="#list-2" data-toggle="tab">TV</a></li>
+			    </ul>
+			    <div class="tab-content">
+				<div id="list-1" class="tab-pane <%= list1Active %>">
+				    <% allList.forEach(function(aRow){ %>
+					<%- include('./aList', {aRow: aRow}) %>
+				    <% }); %>
+				    <%- include('../pagination', {totalCount : allListCount, pageSize : pageSize, pageNum : pageNum, category : category, myType : "video_obj,subject"}) -%>
+				</div>
+				<div id="list-2" class="tab-pane <%= list2Active %>">
+				    <% vedioList.forEach(function(aRow){ %>
+					<%- include('./aList', {aRow: aRow}) %>
+				    <% }); %>
+				    <%- include('../pagination', {totalCount : totalCount, pageSize : pageSize, pageNum : pageNum, category : category, myType : "video_obj"}) -%>
+				</div>
+			    </div>
+			</div>
 		    </div>
-		    <%- include('../pagination', {totalCount : totalCount, pageSize : pageSize, pageNum : pageNum, category : category, myType : myType}) -%>
 		</div>
 	    </div>
 	</div>
