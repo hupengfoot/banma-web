@@ -1,7 +1,13 @@
 <div class="row aList">
+    <% var imgUrl = "" %>
+    <% if(aRow.subject.videoId === undefined || aRow.subject.videoId === "" || aRow.subject.videoId === null){ %>
+    <% imgUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.subject.image[0].url %>
+    <% }else{ %>
+    <% imgUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.videoPoster %>
+    <% } %>
     <div class="col-lg-2">
         <span> 
-            <a target="_blank" href="<%= "/vedio/detail?passport=&videoId=" + aRow.subject.videoId + "&objType=" + aRow.subject.objType + "&objId=" + aRow.subject.objId %>"><img  class="imgBox img-rounded" src="<%= "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.videoPoster %>"></a>
+            <a target="_blank" href="<%= "/vedio/detail?passport=&videoId=" + aRow.subject.videoId + "&objType=" + aRow.subject.objType + "&objId=" + aRow.subject.objId %>"><img  class="imgBox img-rounded" src="<%= imgUrl %>"></a>
         </span>
     </div>
     <div class="col-lg-6">
