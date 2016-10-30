@@ -2,7 +2,11 @@
     <% var imgUrl = "" %>
     <% var href = "" %>
     <% if(aRow.subject.videoId === undefined || aRow.subject.videoId === "" || aRow.subject.videoId === null){ %>
+    <% if(aRow.subject.image[0].url.substring(0, 4) === "http"){ %>
+    <% imgUrl = aRow.subject.image[0].url %>
+    <% }else{ %>
     <% imgUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.subject.image[0].url %>
+    <% } %>
     <% href = "/vedio/subjectdetail?passport=&subjectId=" + aRow.subject.id %>
     <% }else{ %>
     <% imgUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.videoPoster %>
