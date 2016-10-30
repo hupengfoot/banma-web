@@ -2,17 +2,19 @@
     <% var headUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.userInfo.profileThumb %>
     <% var nickName = aRow.userInfo.nickName %>
     <% var content = aRow.content %>
-    <% var time = aRow.createDate %>
-    <div class="col-lg-2">
+
+    <% var time = aRow.createDate.split('T')[0] %>
+    <div class="col-lg-1">
 	<span> 
             <img  class="img-circle" src="<%= headUrl %>" style="width:50px">
         </span>
     </div>
-    <div class="col-lg-4">
-	<p> <%= nickName %> </p>
-	<p> <%= content %> </p>
+    <div class="col-lg-7">
+	<p style="font-szie:14px;font-family:Microsoft YaHei;color:#000000"> <%= nickName %> </p>
+	<p style="font-szie:14px;font-family:Microsoft YaHei;color:#000000"> <%= content %> </p>
     </div>
-    <div class="col-lg-4">
-	<p> <%= time %> </p>
+    <div class="col-lg-2">
+	<p style="font-szie:14px;font-family:Microsoft YaHei;color:#b5b5b5"> <%= time %> </p>
     </div>
 </div>
+<hr style="height: 1px; dashed #CCCCCC;" /> 

@@ -4,7 +4,9 @@
 	    <%- subjectDetail.data.subject.content %>
 	</div>
         <div>
-	   <p>相关评论</p>
+	    <div style="margin-top:40px;margin-bottom:20px;">
+		<span style="margin-right:10px"><img src="../img/shipin_xiangguantuijian.png"></span><span style="font-szie:14px;font-family:Microsoft YaHei;color:#000000">相关评论</span>
+	    </div>
 	    <div>
 	        <% commentDetail.forEach(function(aRow){%>
 	    	<%- include('../oneComment', {aRow: aRow}) -%>
