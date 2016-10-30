@@ -1,13 +1,16 @@
 <div class="row aList">
     <% var imgUrl = "" %>
+    <% var href = "" %>
     <% if(aRow.subject.videoId === undefined || aRow.subject.videoId === "" || aRow.subject.videoId === null){ %>
     <% imgUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.subject.image[0].url %>
+    <% href = "/vedio/subjectdetail?passport=&subjectId=" + aRow.subject.id %>
     <% }else{ %>
     <% imgUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.videoPoster %>
+    <% href = "/vedio/detail?passport=&videoId=" + aRow.subject.videoId + "&objType=" + aRow.subject.objType + "&objId=" + aRow.subject.objId %>
     <% } %>
     <div class="col-lg-2">
         <span> 
-            <a target="_blank" href="<%= "/vedio/detail?passport=&videoId=" + aRow.subject.videoId + "&objType=" + aRow.subject.objType + "&objId=" + aRow.subject.objId %>"><img  class="imgBox img-rounded" src="<%= imgUrl %>"></a>
+            <a target="_blank" href="<%= href %>"><img  class="imgBox img-rounded" src="<%= imgUrl %>"></a>
         </span>
     </div>
     <div class="col-lg-6">

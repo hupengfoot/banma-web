@@ -72,7 +72,7 @@ router.get("/subjectdetail", function(req, res){
 	if(err){
 	    res.jsonp("404 NOT FOUND");
 	}else{
-	    res.render('pages/vedio/detail', {vedioDetail : info});
+	    res.render('pages/vedio/subject', {subjectDetail : info});
 	}
     });
 });
