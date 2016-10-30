@@ -74,4 +74,42 @@ httpBiz.getBMMarketSubjectDetail = function(passport, subjectId, cb){
     });
 };
 
+httpBiz.getBMVideoTopicList = function(videoId, objType, objId, pageSize, pageNum, cb){
+    var formData = {
+	videoId : videoId,
+	objType : objType,
+	objId : objId,
+	pageSize : pageSize,
+	pageNum : pageNum
+    };
+    
+    request.post({url : 'http://test.api.snsports.cn/api/content/pc/GetBMVideoTopicList.json', form : formData}, function(err, response, body){
+	if(err){
+	    console.error(err);
+	    cb(err);
+	}else{
+	    var tmp = JSON.parse(body);
+	    cb(null, tmp.messages);
+	}
+    });
+};
+
+httpBiz.getSubjectTopicList = function(subjectId, pageSize, pageNum, cb){
+    var formData = {
+	subjectId : subjectId,
+	pageSize : pageSize,
+	pageNum : pageNum
+    };
+
+    request.post({url : 'http://test.api.snsports.cn/api/content/pc/GetSubjectTopicList.json', form : formData}, function(err, response, body){
+	if(err){
+	    console.error(err);
+	    cb(err);
+	}else{
+	    var tmp = JSON.parse(body);
+	    cb(null, tmp.messages);
+	}
+    });
+};
+
 module.exports = httpBiz;

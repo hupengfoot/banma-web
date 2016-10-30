@@ -57,22 +57,68 @@ router.get("/list", function(req, res){
 
 router.get("/detail", function(req, res){
     var param= url.parse(req.url, true).query;
-    httpBiz.getBMVideoDetail(param.passport, param.videoId, param.objType, param.objId, function(err, info){
+    var vedioDetail;
+    var commentDetail;
+    async.waterfall([
+	function(callback){
+	    httpBiz.getBMVideoDetail(param.passport, param.videoId, param.objType, param.objId, function(err, info){
+		if(err){
+		    callback("404 NOT FOUND");
+		}else{
+		    vedioDetail = info;
+		    callback();
+		}
+	    });
+	},
+	function(callback){
+	    httpBiz.getBMVideoTopicList(param.videoId, param.objType, param.objId, 10, 1, function(err, info){
+		if(err){
+		    callback("404 NOT FOUND");
+		}else{
+		    commentDetail = info.data.topics;
+		    callback();
+		}
+	    });
+	}
+    ], function(err){
 	if(err){
-	    res.jsonp("404 NOT FOUND");
+	    res.jsonp(err);
 	}else{
-	    res.render('pages/vedio/detail', {vedioDetail : info});
+	    res.render('pages/vedio/detail', {vedioDetail : vedioDetail, commentDetail : commentDetail});
 	}
     });
 });
 
 router.get("/subjectdetail", function(req, res){
     var param= url.parse(req.url, true).query;
-    httpBiz.getBMMarketSubjectDetail(param.passport, param.subjectId, function(err, info){
+    var subjectDetail;
+    var commentDetail;
+    async.waterfall([
+	function(callback){
+	    httpBiz.getBMMarketSubjectDetail(param.passport, param.subjectId, function(err, info){
+		if(err){
+		    callback("404 NOT FOUND");
+		}else{
+		    subjectDetail = info;
+		    callback();
+		}
+	    });
+	},
+	function(callback){
+	    httpBiz.getSubjectTopicList(param.subjectId, 10, 1, function(err, info){
+		if(err){
+		    callback("404 NOT FOUND");
+		}else{
+		    commentDetail = info.data.topics;
+		    callback();
+		}
+	    });
+	}
+    ], function(err){
 	if(err){
-	    res.jsonp("404 NOT FOUND");
+	    res.jsonp(err);
 	}else{
-	    res.render('pages/vedio/subject', {subjectDetail : info});
+	    res.render('pages/vedio/subject', {subjectDetail : subjectDetail, commentDetail : commentDetail});
 	}
     });
 });

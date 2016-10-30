@@ -5,6 +5,11 @@
 	</div>
         <div>
 	   <p>相关评论</p>
+	    <div>
+	        <% commentDetail.forEach(function(aRow){%>
+	    	<%- include('../oneComment', {aRow: aRow}) -%>
+	        <% }) %>
+	    </div>
         </div>
         <div>
         </div>
