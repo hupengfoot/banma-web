@@ -33,3 +33,13 @@
     width: 150px;
     height: 120px;
 }
+
+.pagination>.active>a, 
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover{
+    background-color:#cc3232;
+    border-color:#cc3232
+}
