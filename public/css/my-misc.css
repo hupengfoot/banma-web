@@ -41,6 +41,13 @@
 .pagination>.active>span:focus, 
 .pagination>.active>span:hover{
     background-color:#cc3232;
+    border-color:#cc3232;
+}
+
+.pagination>li>a, .pagination>li>span{
+    color:#000000;
+    font-size:14px;
+    font-family:Microsoft YaHei;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
