@@ -15,8 +15,10 @@ function findWeather() {
 		    _f= _w.f2+"_1.png";
 		}
 		var tq = _w.t2 + "℃/" + _w.t1 + "℃ ";
+		$('#city').html(citytq);
 		$('#weather').html(_w.s1);
 		$('#temperature').html(tq);
+		$('#local-display').css('display', 'block');
 	    }
 	});
     });
