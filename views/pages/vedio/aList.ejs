@@ -1,6 +1,7 @@
 <div class="row aList">
     <% var imgUrl = "" %>
     <% var href = "" %>
+    <% var dateTime = aRow.subject.createDate.split('T')[0].split('-')[0] + "-" + aRow.subject.createDate.split('T')[0].split('-')[1]%>
     <% if(aRow.subject.videoId === undefined || aRow.subject.videoId === "" || aRow.subject.videoId === null){ %>
     <% if(aRow.subject.image[0].url.substring(0, 4) === "http"){ %>
     <% imgUrl = aRow.subject.image[0].url %>
@@ -12,9 +13,10 @@
     <% imgUrl = "http://7xkufz.com2.z0.glb.qiniucdn.com/" + aRow.videoPoster %>
     <% href = "/vedio/detail?passport=&videoId=" + aRow.subject.videoId + "&objType=" + aRow.subject.objType + "&objId=" + aRow.subject.objId %>
     <% } %>
+    <a target="_blank" href="<%= href %>">
     <div class="col-lg-2">
         <span> 
-            <a target="_blank" href="<%= href %>"><img  class="imgBox img-rounded" src="<%= imgUrl %>"></a>
+            <img  class="imgBox img-rounded" src="<%= imgUrl %>">
         </span>
     </div>
     <div class="col-lg-6">
@@ -31,9 +33,10 @@
 	   </div>
 	   <div class="col-lg-4">
 		<img src="../img/qiutan-time.png"></img>
-		<span><%= aRow.subject.createDate.split('T')[0] %></span>
+		<span><%= dateTime %></span>
 	   </div>
         </div>
     </div>
+    </a>
 </div>
 
